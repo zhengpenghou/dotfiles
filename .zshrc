@@ -49,9 +49,11 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ubuntu tmux npm sudo ssh-agent gpg-agent vundle web-search
-command-not-found debian meteor node)
-
+if [[ $(uname) = 'Linux' ]]; then
+    plugins=(git ubuntu tmux npm sudo ssh-agent gpg-agent vundle web-search command-not-found debian meteor node)
+elif [[ $(uname) = 'Darwin' ]]; then
+    plugins=(git tmux npm sudo ssh-agent gpg-agent vundle web-search osx brew meteor node)
+fi
 # User configuration
 
 export PATH="$HOME/bin:$HOME/depot_tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
